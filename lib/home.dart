@@ -1,7 +1,6 @@
-import 'package:curex/ChatPage.dart';
 import 'package:curex/medsearch.dart';
-import 'package:curex/pharm.dart';
 import 'package:flutter/material.dart';
+import 'package:curex/src/features/splash/splash_screen.dart';
 
 class NavigationButton extends StatelessWidget {
   final String buttonText;
@@ -42,14 +41,14 @@ class NavigationButton extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  const Home({Key? key});
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical, 
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           child: Stack(
@@ -59,14 +58,14 @@ class Home extends StatelessWidget {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 1.6,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                     ),
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height / 2.5,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 79, 180, 111),
                       borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(40),
@@ -80,7 +79,7 @@ class Home extends StatelessWidget {
                   ),
                 ],
               ),
-              Positioned(
+              const Positioned(
                 top: 75,
                 left: 0,
                 right: 0,
@@ -99,7 +98,7 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned(
+              const Positioned(
                 top: 323,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -131,7 +130,7 @@ class Home extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 2.7,
                         height: MediaQuery.of(context).size.width / 2.5,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 147, 234, 166),
+                          color: const Color.fromARGB(255, 147, 234, 166),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
@@ -139,8 +138,8 @@ class Home extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network('https://i.pinimg.com/originals/e1/29/71/e12971a66a3d4a274073a7abd540d4f0.png'),
-                            NavigationButton(
-                              key: const ValueKey("fever"),
+                            const NavigationButton(
+                              key: ValueKey("fever"),
                               buttonText: "Fever",
                               routeName: "fev", // Check if the routeName matches
                             ),
@@ -153,7 +152,7 @@ class Home extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 2.7,
                         height: MediaQuery.of(context).size.width / 2.5,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 147, 234, 166),
+                          color: const Color.fromARGB(255, 147, 234, 166),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
@@ -161,8 +160,8 @@ class Home extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network('https://i.pinimg.com/originals/4c/ed/37/4ced378c509c7eff7fee58a679a6f2e5.png', height: 107),
-                            NavigationButton(
-                              key: const ValueKey("cough"),
+                            const NavigationButton(
+                              key: ValueKey("cough"),
                               buttonText: "Cough",
                               routeName: "cough", // Check if the routeName matches
                             ),
@@ -175,7 +174,7 @@ class Home extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 2.7,
                         height: MediaQuery.of(context).size.width / 2.5,
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 147, 234, 166),
+                          color: const Color.fromARGB(255, 147, 234, 166),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Column(
@@ -183,8 +182,8 @@ class Home extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Image.network('https://i.pinimg.com/originals/9e/78/d0/9e78d0bbf50cd3fe8be37ca5ae391053.png', height: 107),
-                            NavigationButton(
-                              key: const ValueKey("headache"),
+                            const NavigationButton(
+                              key: ValueKey("headache"),
                               buttonText: "Headache",
                               routeName: "headache", // Check if the routeName matches
                             ),
@@ -203,18 +202,18 @@ class Home extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 7), 
+                    const SizedBox(height: 7), 
                     Row(
                       children: [
                         TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Medsearch()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MedSearch()));
                                 },
                           child: Container(
                             width: MediaQuery.of(context).size.width / 2 - 17,
                             height: 150,
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 73, 215, 151),
+                              color: const Color.fromARGB(255, 73, 215, 151),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
@@ -225,23 +224,23 @@ class Home extends StatelessWidget {
                                   'https://i.pinimg.com/originals/ed/03/77/ed0377ff3e4ab48f4d3696e44526a0f4.png',
                                   height: 100,
                                 ),
-                                Text(
+                                const Text(
                                   "Locate the nearest \n        pharmacy",
                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white ),                                ),
                               ],
                             ),
                           ),
                         ),
-                        SizedBox(width: 0),
+                        const SizedBox(width: 0),
                         TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const  ChatPage()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const  SplashScreen()));
                                 },
                           child: Container(
                             width: MediaQuery.of(context).size.width / 2 - 17,
                             height: 150,
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 73, 215, 151),
+                              color: const Color.fromARGB(255, 73, 215, 151),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
@@ -252,78 +251,7 @@ class Home extends StatelessWidget {
                                   'https://i.pinimg.com/originals/5a/c2/8e/5ac28e3b1016717e01144ce05e1f7817.png',
                                   height: 100,
                                 ),
-                                Text(
-                                  "Chat with our \n      AI bot!",
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
-                                  selectionColor: Colors.amber,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-Positioned(
-                top: MediaQuery.of(context).size.height / 2.5 + 220,
-                left: 0,
-                right: 0,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 7), 
-                    Row(
-                      children: [
-                        TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Pharmacy()));
-                                },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width / 2 - 17,
-                            height: 150,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 73, 215, 151),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.network(
-                                  'https://i.pinimg.com/originals/ed/03/77/ed0377ff3e4ab48f4d3696e44526a0f4.png',
-                                  height: 100,
-                                ),
-                                Text(
-                                  "Locate the nearest \n        pharmacy",
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white ),                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: 0),
-                        TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const  ChatPage()));
-                                },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width / 2 - 17,
-                            height: 150,
-                            decoration: BoxDecoration(
-                              color: Color.fromARGB(255, 73, 215, 151),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.network(
-                                  'https://i.pinimg.com/originals/5a/c2/8e/5ac28e3b1016717e01144ce05e1f7817.png',
-                                  height: 100,
-                                ),
-                                Text(
+                                const Text(
                                   "Chat with our \n      AI bot!",
                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
                                   selectionColor: Colors.amber,

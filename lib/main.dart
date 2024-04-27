@@ -1,5 +1,5 @@
 import 'package:curex/cough.dart';
-import 'package:curex/fever.dart';
+import 'package:curex/Fever.dart';
 import 'package:curex/headache.dart';
 import 'package:curex/intro.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
       ),
       routes:
       {
-       'fev': (context) => const fever(), 
+       'fev': (context) => const Fever(), 
         'cough': (context) => const cough(),
         'headache':(context) => const headache(),  
       } ,
-      home: curex(),
+      home: const curex(),
       debugShowCheckedModeBanner: false,
     );
   

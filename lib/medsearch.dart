@@ -1,15 +1,31 @@
+import 'package:curex/pharm.dart';
 import 'package:flutter/material.dart';
 
-class Medsearch extends StatefulWidget {
-  const Medsearch({super.key});
-
-  @override
-  State<Medsearch> createState() => _MedsearchState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _MedsearchState extends State<Medsearch> {
-   // This holds a list of fiction users
-  // You can use data fetched from a database or a server as well
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Search Medicine',
+      home: MedSearch(),
+    );
+  }
+}
+
+class MedSearch extends StatefulWidget {
+  const MedSearch({Key? key}) : super(key: key);
+
+  @override
+  State<MedSearch> createState() => _MedSearchState();
+}
+
+class _MedSearchState extends State<MedSearch> {
   final List<Map<String, dynamic>> _allMedicine = [
     {"id": 1, "name": "Crocin Advance 500mg", "Component": "Paracetamol / Acetaminophen(500.0 Mg)"},
     {"id": 2, "name": "Disprin Regular 325mg ", "Component": "Aspirin / Acetyl Salicylic Acid(325.0 Mg)"},
@@ -23,33 +39,37 @@ class _MedsearchState extends State<Medsearch> {
     {"id": 10, "name": "Nailrox Nail Lacquer 5ml", "Component": "Ciclopirox(8.0 %)"},
   ];
 
-  // This list holds the data for the list view
   List<Map<String, dynamic>> _foundMedicine = [];
+
   @override
   initState() {
-    // at the beginning, all users are shown
     _foundMedicine = _allMedicine;
     super.initState();
   }
 
-  // This function is called whenever the text field changes
   void _runFilter(String enteredKeyword) {
     List<Map<String, dynamic>> results = [];
     if (enteredKeyword.isEmpty) {
-      // if the search field is empty or only contains white-space, we'll display all users
       results = _allMedicine;
     } else {
       results = _allMedicine
           .where((user) =>
-          user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
+              user["name"].toLowerCase().contains(enteredKeyword.toLowerCase()))
           .toList();
-      // we use the toLowerCase() method to make it case-insensitive
     }
 
-    // Refresh the UI
     setState(() {
       _foundMedicine = results;
     });
+  }
+
+  void _navigateToPharmacyPage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Pharmacy(),
+      ),
+    );
   }
 
   @override
@@ -68,7 +88,9 @@ class _MedsearchState extends State<Medsearch> {
             TextField(
               onChanged: (value) => _runFilter(value),
               decoration: const InputDecoration(
-                  labelText: 'Search', suffixIcon: Icon(Icons.search)),
+                labelText: 'Search',
+                suffixIcon: Icon(Icons.search),
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -76,29 +98,35 @@ class _MedsearchState extends State<Medsearch> {
             Expanded(
               child: _foundMedicine.isNotEmpty
                   ? ListView.builder(
-                itemCount: _foundMedicine.length,
-                itemBuilder: (context, index) => Card(
-                  key: ValueKey(_foundMedicine[index]["id"]),
-                  color: Colors.purple,
-                  elevation: 4,
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  child: ListTile(
-                    leading: Text(
-                      _foundMedicine[index]["id"].toString(),
-                      style: const TextStyle(fontSize: 24, color: Colors.white),
-                    ),
-                    title: Text(_foundMedicine[index]['name'].toString(),
-                        style: const TextStyle( color: Colors.white, fontWeight: FontWeight.bold)),
-                    subtitle: Text(
-                        '${_foundMedicine[index]["Component"].toString()}',
-                        style: const TextStyle( color: Colors.white)) ,
-                  ),
-                ),
-              )
+                      itemCount: _foundMedicine.length,
+                      itemBuilder: (context, index) => Card(
+                        key: ValueKey(_foundMedicine[index]["id"]),
+                        color: Colors.purple,
+                        elevation: 4,
+                        margin: const EdgeInsets.symmetric(vertical: 10),
+                        child: GestureDetector(
+                          onTap: () => _navigateToPharmacyPage(context), // Navigate to Pharmacy page
+                          child: ListTile(
+                            leading: Text(
+                              _foundMedicine[index]["id"].toString(),
+                              style: const TextStyle(fontSize: 24, color: Colors.white),
+                            ),
+                            title: Text(
+                              _foundMedicine[index]['name'].toString(),
+                              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(
+                              '${_foundMedicine[index]["Component"].toString()}',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   : const Text(
-                'No results found',
-                style: TextStyle(fontSize: 24),
-              ),
+                      'No results found',
+                      style: TextStyle(fontSize: 24),
+                    ),
             ),
           ],
         ),
@@ -106,3 +134,5 @@ class _MedsearchState extends State<Medsearch> {
     );
   }
 }
+
+

@@ -1,4 +1,5 @@
-import 'package:curex/home.dart';
+
+import 'package:curex/navscreen.dart';
 import 'package:flutter/material.dart';
 
 class login extends StatelessWidget {
@@ -62,7 +63,7 @@ class login extends StatelessWidget {
                             children: [
                                TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const navscreen()));
                                 },
                               
                              child: const Text(
@@ -81,7 +82,7 @@ class login extends StatelessWidget {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const navscreen()));
                                 },
                                 child: const Text(
                                   'Sign Up',
@@ -94,7 +95,7 @@ class login extends StatelessWidget {
                                 style: const ButtonStyle(),
                               ),
                               TextButton(
-                                  onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Home()));},
+                                  onPressed: () { Navigator.of(context).push(MaterialPageRoute(builder: (context) => const navscreen()));},
                                   child: const Text(
                                     'Continue as guest',
                                     style: TextStyle(

@@ -1,9 +1,9 @@
-// ignore_for_file: file_names
-
 import 'package:flutter/material.dart';
 
-class ChatPage extends StatelessWidget {
-  const ChatPage({super.key});
+class Doctor
+ extends StatelessWidget {
+  const Doctor
+  ({super.key});
 
   @override
   Widget build(BuildContext context) {

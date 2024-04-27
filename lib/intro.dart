@@ -5,6 +5,7 @@ void main() {
   runApp(const curex());
 }
 
+// ignore: camel_case_types
 class curex extends StatelessWidget {
   const curex({Key? key}) : super(key: key);
 
@@ -14,27 +15,35 @@ class curex extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text("                            cureX"),
-          backgroundColor: Color.fromARGB(255, 79, 180, 111),
+          backgroundColor: const Color.fromARGB(255, 79, 180, 111),
         ),
         body: Container(
           height: 800,
           width: 415,
-          color: const Color(0xFF000000),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Colors.black,
+                Color.fromARGB(255, 1, 30, 1),
+              ],
+            )),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
+              const SizedBox(
                 height: 300,
                 width: 300,
-                color: const Color(0xFF000000),
-                child: const Image(
-                  image: NetworkImage('https://i.pinimg.com/originals/4d/73/71/4d737151a04e3b8633d27c25a2c6cebd.jpg'),
+                child: Image(
+                  image: NetworkImage('https://i.pinimg.com/originals/b2/7b/27/b27b273820bda6dc143c802ba5c33e5b.png'),
                 ),
               ),
               const SizedBox(height: 1),
               Row(
                 children: [
+                  // ignore: avoid_unnecessary_containers
                   Container(
                     child: const Text(
                     '     Symptom Checker',
